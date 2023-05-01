@@ -37,7 +37,13 @@ function refreshDisplay() {
 // 	each click will add the id of the selected button to the display value
 // 	special case for '.' and '0'.
 numberButtons.forEach(button => button.addEventListener('click', e => {
-  displayValue += e.target.getAttribute('id');
+  if(e.target.getAttribute('id') === '.'){
+    if(!displayValue.includes('.')){
+      displayValue += e.target.getAttribute('id');
+    }
+  } else {
+    displayValue += e.target.getAttribute('id');
+  }
   refreshDisplay();
 }));
 
