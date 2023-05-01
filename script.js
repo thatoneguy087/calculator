@@ -36,6 +36,10 @@ function refreshDisplay() {
 // 	if isOperationComplete is true, set the displayValue to '0'.
 // 	each click will add the id of the selected button to the display value
 // 	special case for '.' and '0'.
+numberButtons.forEach(button => button.addEventListener('click', e => {
+  displayValue += e.target.getAttribute('id');
+  refreshDisplay();
+}));
 
 // Add click event handler to each of the number options
 // 	each click will modify the displayValue
