@@ -28,6 +28,9 @@ const operations = document.querySelectorAll('.buttons .operators button');
 
 // Create refreshDisplay Function
 // 	set the display text content to the display value. That's is.
+function refreshDisplay() {
+  display.textContent = displayValue;
+}
 
 // Add click event handler to each of the number buttons
 // 	if isOperationComplete is true, set the displayValue to '0'.
