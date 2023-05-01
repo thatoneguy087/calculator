@@ -41,6 +41,10 @@ numberButtons.forEach(button => button.addEventListener('click', e => {
     if(!displayValue.includes('.')){
       displayValue += e.target.getAttribute('id');
     }
+  } else if(e.target.getAttribute('id') === '0') {
+    if(displayValue !== '0'){
+      displayValue += e.target.getAttribute('id');
+    }
   } else {
     displayValue += e.target.getAttribute('id');
   }
