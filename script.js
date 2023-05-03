@@ -29,6 +29,12 @@ const operations = document.querySelectorAll('.buttons .operators button');
 // Create refreshDisplay Function
 // 	set the display text content to the display value. That's is.
 function refreshDisplay() {
+  if(displayValue.startsWith('0') && !displayValue.includes('.')) {
+    displayValue = displayValue.substring(1, displayValue.length);
+  }
+  if(displayValue === ''){
+    displayValue = '0';
+  }
   display.textContent = displayValue;
 }
 
