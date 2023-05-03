@@ -73,6 +73,10 @@ function clearAll() {
   operator = null;
   isOperationComplete = false;
 }
+numberOptions.forEach(option => option.addEventListener('click', e => {
+  displayValue = 'test';
+  refreshDisplay();
+}));
 // Create basic operation function
 // 	add, subtract, multiply, divide
 
