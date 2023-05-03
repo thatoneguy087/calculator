@@ -66,6 +66,13 @@ numberButtons.forEach(button => button.addEventListener('click', e => {
 function clearDisplay() {
   displayValue = '0';
 }
+function clearAll() {
+  clearDisplay();
+  operand1 = null;
+  operand2 = null;
+  operator = null;
+  isOperationComplete = false;
+}
 // Create basic operation function
 // 	add, subtract, multiply, divide
 
