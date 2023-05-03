@@ -74,7 +74,9 @@ function clearAll() {
   isOperationComplete = false;
 }
 numberOptions.forEach(option => option.addEventListener('click', e => {
-  displayValue = 'test';
+  if(e.target.getAttribute('id') === 'clear'){
+    clearAll();
+  }
   refreshDisplay();
 }));
 // Create basic operation function
