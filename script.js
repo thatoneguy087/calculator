@@ -63,7 +63,9 @@ numberButtons.forEach(button => button.addEventListener('click', e => {
 // 	'c' will clear out everything, variables and all, refresh display
 // 	'ce' will clear out just the current entry
 // 	'←' will backspace a number
-
+function clearDisplay() {
+  displayValue = '0';
+}
 // Create basic operation function
 // 	add, subtract, multiply, divide
 
