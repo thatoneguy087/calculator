@@ -82,6 +82,8 @@ numberOptions.forEach(option => option.addEventListener('click', e => {
     if(displayValue.length > 1){
       displayValue = displayValue.substring(0, displayValue.length - 1);
     }
+  } else if(e.target.getAttribute('id') === 'sign') {
+    displayValue = displayValue.startsWith('-') ? displayValue.substring(1, displayValue.length) : `-${displayValue}`;
   }
   refreshDisplay();
 }));
