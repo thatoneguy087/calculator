@@ -78,6 +78,10 @@ numberOptions.forEach(option => option.addEventListener('click', e => {
     clearAll();
   } else if(e.target.getAttribute('id') === 'clear-entry') {
     clearDisplay();
+  } else if(e.target.getAttribute('id') === 'backspace'){
+    if(displayValue.length > 1){
+      displayValue = displayValue.substring(0, displayValue.length - 1);
+    }
   }
   refreshDisplay();
 }));
