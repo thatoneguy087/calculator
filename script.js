@@ -76,6 +76,8 @@ function clearAll() {
 numberOptions.forEach(option => option.addEventListener('click', e => {
   if(e.target.getAttribute('id') === 'clear'){
     clearAll();
+  } else if(e.target.getAttribute('id') === 'clear-entry') {
+    clearDisplay();
   }
   refreshDisplay();
 }));
