@@ -29,9 +29,6 @@ const operations = document.querySelectorAll('.buttons .operators button');
 // Create refreshDisplay Function
 // 	set the display text content to the display value. That's is.
 function refreshDisplay() {
-  if(displayValue.startsWith('0') && !displayValue.includes('.')) {
-    displayValue = displayValue.substring(1, displayValue.length);
-  }
   if(displayValue === ''){
     displayValue = '0';
   }
@@ -47,12 +44,13 @@ numberButtons.forEach(button => button.addEventListener('click', e => {
     if(!displayValue.includes('.')){
       displayValue += e.target.getAttribute('id');
     }
-  } else if(e.target.getAttribute('id') === '0') {
-    if(displayValue !== '0'){
+  }else if(e.target.getAttribute('id') === '0') {
+    if(displayValue.includes('.') || (Number(displayValue) !== 0)) {
       displayValue += e.target.getAttribute('id');
     }
-  } else {
-    displayValue += e.target.getAttribute('id');
+  }else {
+    //Number conversion to format number properly
+    displayValue = Number(`${displayValue}${e.target.getAttribute('id')}`).toString();
   }
   refreshDisplay();
 }));
