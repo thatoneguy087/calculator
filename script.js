@@ -77,7 +77,11 @@ numberOptions.forEach(option => option.addEventListener('click', e => {
   } else if(e.target.getAttribute('id') === 'clear-entry') {
     clearDisplay();
   } else if(e.target.getAttribute('id') === 'backspace'){
-    if(displayValue.length > 1){
+    if(displayValue.includes('-')){
+      if(displayValue.length > 2){
+        displayValue = displayValue.substring(0, displayValue.length - 1);
+      }
+    } else if(displayValue.length > 1) {
       displayValue = displayValue.substring(0, displayValue.length - 1);
     }
   } else if(e.target.getAttribute('id') === 'sign') {
