@@ -45,11 +45,22 @@ function formatDisplayValue() {
     displayValue = displayValue.substring(1, displayValue.length);
   }
 }
+
+//function to get the length of only the number in displayValue, not counting the sign.
+function getDisplayValueNumberLength() {
+  if(displayValue.includes('-')){
+    return displayValue.length -1;
+  }
+  return displayValue.length
+}
 // Add click event handler to each of the number buttons
 // 	if isOperationComplete is true, set the displayValue to '0'.
 // 	each click will add the id of the selected button to the display value
 // 	special case for '.' and '0'.
 numberButtons.forEach(button => button.addEventListener('click', e => {
+  if(getDisplayValueNumberLength() >= 9){
+    return;
+  }
   if(e.target.getAttribute('id') === '.'){
     if(!displayValue.includes('.')){
       displayValue += e.target.getAttribute('id');
