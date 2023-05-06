@@ -1,33 +1,28 @@
 'use strict';
-// Create displayValue and set it to 0
+// Initialize displayValue
 let displayValue = '0';
 
-// Create operand1
+//Initialize pieces of an operation
 let operand1;
-
-// Create operand2
 let operand2;
-
-// Create operator
 let operator;
 
-// Create isOperationComplete
+// Flag to reset displayValue
 let isOperationComplete = false;
 
-// Get reference to the display
+// Reference to the display
 const display = document.querySelector('.display h1');
 
-// Get reference to the number buttons
+// Reference to the number buttons
 const numberButtons = document.querySelectorAll('.buttons .numbers button');
 
-// Get reference to the number options
+// Reference to the number options
 const numberOptions = document.querySelectorAll('.buttons .options button');
 
-// Get reference to the operation buttons
+// Reference to the operation buttons
 const operations = document.querySelectorAll('.buttons .operators button');
 
-// Create refreshDisplay Function
-// 	set the display text content to the display value. That's is.
+// refreshDisplay Function - 	set the display text content to the display value
 function refreshDisplay() {
   if(displayValue === ''){
     displayValue = '0';
@@ -35,6 +30,7 @@ function refreshDisplay() {
   display.textContent = displayValue;
 }
 
+// FormatDisplayValue to valid number value
 function formatDisplayValue() {
   if(displayValue.includes('.')){
     return;
@@ -46,17 +42,42 @@ function formatDisplayValue() {
   }
 }
 
-//function to get the length of only the number in displayValue, not counting the sign.
+// Get the length of only the number in displayValue, not counting the sign
 function getDisplayValueNumberLength() {
   if(displayValue.includes('-')){
     return displayValue.length -1;
   }
   return displayValue.length
 }
-// Add click event handler to each of the number buttons
-// 	if isOperationComplete is true, set the displayValue to '0'.
-// 	each click will add the id of the selected button to the display value
-// 	special case for '.' and '0'.
+
+// 	Clear out just the current entry
+function clearDisplay() {
+  displayValue = '0';
+}
+
+// 	Clear out everything, variables and all, refresh display
+function clearAll() {
+  clearDisplay();
+  operand1 = null;
+  operand2 = null;
+  operator = null;
+  isOperationComplete = false;
+}
+
+// 	backspace displayValue
+function backspace() {
+  if(getDisplayValueNumberLength() > 1) {
+    displayValue = displayValue.substring(0, displayValue.length -1);
+  }
+}
+
+// 	Change the sign
+function changeDisplayValueSign() {
+  displayValue = displayValue.startsWith('-') ? displayValue.substring(1, displayValue.length) : `-${displayValue}`;
+}
+
+// Click event handler to update displayValue with the button id
+// 	if isOperationComplete is true, set the displayValue to '0'
 numberButtons.forEach(button => button.addEventListener('click', e => {
   if(getDisplayValueNumberLength() >= 9){
     return;
@@ -64,11 +85,13 @@ numberButtons.forEach(button => button.addEventListener('click', e => {
   let addOn = e.target.getAttribute('id');
   switch(addOn){
     case '.':
+      //Only 1 decimal can be present
       if(!displayValue.includes('.')){
         displayValue += addOn;
       }
       break;
     case '0':
+      //Will only add zeros when appropriate
       if(displayValue.includes('.') || (Number(displayValue) !== 0)) {
         displayValue += addOn;
       }
@@ -79,33 +102,8 @@ numberButtons.forEach(button => button.addEventListener('click', e => {
   formatDisplayValue();
   refreshDisplay();
 }));
-// Add click event handler to each of the number options
-// 	each click will modify the displayValue
-// 	'-' will change the sign
-// 	'c' will clear out everything, variables and all, refresh display
-// 	'ce' will clear out just the current entry
-// 	'←' will backspace a number
-function clearDisplay() {
-  displayValue = '0';
-}
-function clearAll() {
-  clearDisplay();
-  operand1 = null;
-  operand2 = null;
-  operator = null;
-  isOperationComplete = false;
-}
 
-function backspace() {
-  if(getDisplayValueNumberLength() > 1) {
-    displayValue = displayValue.substring(0, displayValue.length -1);
-  }
-}
-
-function changeDisplayValueSign() {
-  displayValue = displayValue.startsWith('-') ? displayValue.substring(1, displayValue.length) : `-${displayValue}`;
-}
-
+// Click event handler to the option buttons to modify/clear out displayValue
 numberOptions.forEach(option => option.addEventListener('click', e => {
   switch(e.target.getAttribute('id')){
     case 'clear':
@@ -125,6 +123,7 @@ numberOptions.forEach(option => option.addEventListener('click', e => {
   }
   refreshDisplay();
 }));
+
 // Create basic operation function
 // 	add, subtract, multiply, divide
 
