@@ -102,6 +102,10 @@ function backspace() {
   }
 }
 
+function changeDisplayValueSign() {
+  displayValue = displayValue.startsWith('-') ? displayValue.substring(1, displayValue.length) : `-${displayValue}`;
+}
+
 numberOptions.forEach(option => option.addEventListener('click', e => {
   if(e.target.getAttribute('id') === 'clear'){
     clearAll();
@@ -110,7 +114,7 @@ numberOptions.forEach(option => option.addEventListener('click', e => {
   } else if(e.target.getAttribute('id') === 'backspace'){
     backspace();
   } else if(e.target.getAttribute('id') === 'sign') {
-    displayValue = displayValue.startsWith('-') ? displayValue.substring(1, displayValue.length) : `-${displayValue}`;
+    changeDisplayValueSign();
   }
   refreshDisplay();
 }));
