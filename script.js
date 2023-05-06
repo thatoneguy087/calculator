@@ -95,19 +95,20 @@ function clearAll() {
   operator = null;
   isOperationComplete = false;
 }
+
+function backspace() {
+  if(getDisplayValueNumberLength() > 1) {
+    displayValue = displayValue.substring(0, displayValue.length -1);
+  }
+}
+
 numberOptions.forEach(option => option.addEventListener('click', e => {
   if(e.target.getAttribute('id') === 'clear'){
     clearAll();
   } else if(e.target.getAttribute('id') === 'clear-entry') {
     clearDisplay();
   } else if(e.target.getAttribute('id') === 'backspace'){
-    if(displayValue.includes('-')){
-      if(displayValue.length > 2){
-        displayValue = displayValue.substring(0, displayValue.length - 1);
-      }
-    } else if(displayValue.length > 1) {
-      displayValue = displayValue.substring(0, displayValue.length - 1);
-    }
+    backspace();
   } else if(e.target.getAttribute('id') === 'sign') {
     displayValue = displayValue.startsWith('-') ? displayValue.substring(1, displayValue.length) : `-${displayValue}`;
   }
