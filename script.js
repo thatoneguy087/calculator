@@ -35,6 +35,16 @@ function refreshDisplay() {
   display.textContent = displayValue;
 }
 
+function formatDisplayValue() {
+  if(displayValue.includes('.')){
+    return;
+  }
+  if(displayValue.startsWith('-0') && displayValue !== '-0'){
+    displayValue = `-${displayValue.substring(2, displayValue.length)}`
+  } else if(displayValue.startsWith('0')){
+    displayValue = displayValue.substring(1, displayValue.length);
+  }
+}
 // Add click event handler to each of the number buttons
 // 	if isOperationComplete is true, set the displayValue to '0'.
 // 	each click will add the id of the selected button to the display value
@@ -49,10 +59,10 @@ numberButtons.forEach(button => button.addEventListener('click', e => {
       displayValue += e.target.getAttribute('id');
     }
   }else {
-    //Number conversion to format number properly
-    displayValue = Number(`${displayValue}${e.target.getAttribute('id')}`).toString();
-  }
-  refreshDisplay();
+    displayValue += e.target.getAttribute('id');
+    }
+    formatDisplayValue();
+    refreshDisplay();
 }));
 
 // Add click event handler to each of the number options
