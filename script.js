@@ -93,6 +93,12 @@ function divide(num1,num2) {
   return num1 / num2;
 }
 
+// Operate function - will take in two values, along with an operator, and return the result
+function operate(num1, num2, op) {
+  return op(num1, num2);
+}
+
+
 // Click event handler to update displayValue with the button id
 // 	if isOperationComplete is true, set the displayValue to '0'
 numberButtons.forEach(button => button.addEventListener('click', e => {
@@ -141,8 +147,6 @@ numberOptions.forEach(option => option.addEventListener('click', e => {
   refreshDisplay();
 }));
 
-// Create operate function
-// 	will take in two values, along with an operator, and return the result
 
 // Add click event handler to the operation buttons
 // 	clicking the '=' button will store the displayValue in operand2. It will then attempt to evaluate with operand1 and the operator. If the other parts are missing, do nothing.
