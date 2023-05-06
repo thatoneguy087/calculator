@@ -107,14 +107,21 @@ function changeDisplayValueSign() {
 }
 
 numberOptions.forEach(option => option.addEventListener('click', e => {
-  if(e.target.getAttribute('id') === 'clear'){
-    clearAll();
-  } else if(e.target.getAttribute('id') === 'clear-entry') {
-    clearDisplay();
-  } else if(e.target.getAttribute('id') === 'backspace'){
-    backspace();
-  } else if(e.target.getAttribute('id') === 'sign') {
-    changeDisplayValueSign();
+  switch(e.target.getAttribute('id')){
+    case 'clear':
+      clearAll();
+      break;
+    case  'clear-entry':
+      clearDisplay();
+      break;
+    case 'backspace':
+      backspace();
+      break;
+    case 'sign':
+      changeDisplayValueSign();
+      break;
+    default:
+      console.log('Something went HORRIBLY wrong.')
   }
   refreshDisplay();
 }));
