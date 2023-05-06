@@ -76,6 +76,23 @@ function changeDisplayValueSign() {
   displayValue = displayValue.startsWith('-') ? displayValue.substring(1, displayValue.length) : `-${displayValue}`;
 }
 
+// Basic operation functions add, subtract, multiply, divide
+function add(num1, num2) {
+  return num1 + num2;
+}
+function subtract(num1,num2) {
+  return num1 - num2;
+}
+function multiply(num1,num2) {
+  return num1 * num2;
+}
+function divide(num1,num2) {
+  if(num2 === 0) {
+    return 'Gottem';
+  }
+  return num1 / num2;
+}
+
 // Click event handler to update displayValue with the button id
 // 	if isOperationComplete is true, set the displayValue to '0'
 numberButtons.forEach(button => button.addEventListener('click', e => {
@@ -123,9 +140,6 @@ numberOptions.forEach(option => option.addEventListener('click', e => {
   }
   refreshDisplay();
 }));
-
-// Create basic operation function
-// 	add, subtract, multiply, divide
 
 // Create operate function
 // 	will take in two values, along with an operator, and return the result
