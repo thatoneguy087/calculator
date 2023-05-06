@@ -61,21 +61,24 @@ numberButtons.forEach(button => button.addEventListener('click', e => {
   if(getDisplayValueNumberLength() >= 9){
     return;
   }
-  if(e.target.getAttribute('id') === '.'){
-    if(!displayValue.includes('.')){
-      displayValue += e.target.getAttribute('id');
-    }
-  }else if(e.target.getAttribute('id') === '0') {
-    if(displayValue.includes('.') || (Number(displayValue) !== 0)) {
-      displayValue += e.target.getAttribute('id');
-    }
-  }else {
-    displayValue += e.target.getAttribute('id');
-    }
-    formatDisplayValue();
-    refreshDisplay();
+  let addOn = e.target.getAttribute('id');
+  switch(addOn){
+    case '.':
+      if(!displayValue.includes('.')){
+        displayValue += addOn;
+      }
+      break;
+    case '0':
+      if(displayValue.includes('.') || (Number(displayValue) !== 0)) {
+        displayValue += addOn;
+      }
+      break;
+    default:
+      displayValue += addOn;
+  }
+  formatDisplayValue();
+  refreshDisplay();
 }));
-
 // Add click event handler to each of the number options
 // 	each click will modify the displayValue
 // 	'-' will change the sign
