@@ -174,8 +174,18 @@ operations.forEach(button => button.addEventListener('click', e => {
     displayValue = operate(operand1, operand2, operator);
     refreshDisplay();
   }else {
-    operand1 = getDisplayValueNumber();
-    operator = getOperatorFunction(operation);
+    if(operand1) {
+      //start chain if we already have our starting values
+      operand1 = operate(operand1, getDisplayValueNumber(), operator);
+      //string conversion to ensure displayValue will work with other methods
+      displayValue = operand1.toString();
+      operator = getOperatorFunction(operation);
+      refreshDisplay();
+    } else {
+      //get our initial values
+      operand1 = getDisplayValueNumber();
+      operator = getOperatorFunction(operation);
+    }
   }
   isOperationComplete = true;
 }));
