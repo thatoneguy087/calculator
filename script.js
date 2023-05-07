@@ -159,6 +159,7 @@ operations.forEach(button => button.addEventListener('click', e => {
   if(operation === 'evaluate') {
     console.log('evaluate');
   }else {
-    console.log('other operation');
+    operand1 = displayValue;
+    operator = window[e.target.getAttribute('id')];
   }
 }));
