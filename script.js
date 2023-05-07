@@ -105,6 +105,10 @@ numberButtons.forEach(button => button.addEventListener('click', e => {
   if(getDisplayValueNumberLength() >= 9){
     return;
   }
+  if(isOperationComplete) {
+    displayValue = '0';
+    isOperationComplete = false;
+  }
   let addOn = e.target.getAttribute('id');
   switch(addOn){
     case '.':
@@ -162,4 +166,5 @@ operations.forEach(button => button.addEventListener('click', e => {
     operand1 = displayValue;
     operator = window[e.target.getAttribute('id')];
   }
+  isOperationComplete = true;
 }));
