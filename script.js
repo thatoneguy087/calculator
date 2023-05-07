@@ -103,6 +103,11 @@ function getDisplayValueNumber() {
   return Number(displayValue);
 }
 
+// Get the operation function
+function getOperatorFunction(operator) {
+  return window[operator];
+}
+
 // Click event handler to update displayValue with the button id
 // 	if isOperationComplete is true, set the displayValue to '0'
 numberButtons.forEach(button => button.addEventListener('click', e => {
@@ -170,7 +175,7 @@ operations.forEach(button => button.addEventListener('click', e => {
     refreshDisplay();
   }else {
     operand1 = getDisplayValueNumber();
-    operator = window[e.target.getAttribute('id')];
+    operator = getOperatorFunction(operation);
   }
   isOperationComplete = true;
 }));
