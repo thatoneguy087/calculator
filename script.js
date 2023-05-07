@@ -55,12 +55,16 @@ function clearDisplay() {
   displayValue = '0';
 }
 
-// 	Clear out everything, variables and all, refresh display
-function clearAll() {
-  clearDisplay();
+function clearVariables() {
   operand1 = null;
   operand2 = null;
   operator = null;
+}
+
+// 	Clear out everything, variables and all, refresh display
+function clearAll() {
+  clearDisplay();
+  clearVariables();
   isOperationComplete = false;
 }
 
@@ -171,7 +175,8 @@ operations.forEach(button => button.addEventListener('click', e => {
   let operation = e.target.getAttribute('id');
   if(operation === 'evaluate') {
     operand2 = getDisplayValueNumber();
-    displayValue = operate(operand1, operand2, operator);
+    displayValue = operate(operand1, operand2, operator).toString();
+    clearVariables();
     refreshDisplay();
   }else {
     if(operand1) {
