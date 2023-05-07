@@ -154,3 +154,11 @@ numberOptions.forEach(option => option.addEventListener('click', e => {
 // 	operand1, then we already have an operand. We can use these pieces, along with the current displayValue to create a chain of operations. We then update the operand for future chain/evaluation.
 // 	refresh the display
 // 	set isOperationComplete to true
+operations.forEach(button => button.addEventListener('click', e => {
+  let operation = e.target.getAttribute('id');
+  if(operation === 'evaluate') {
+    console.log('evaluate');
+  }else {
+    console.log('other operation');
+  }
+}));
