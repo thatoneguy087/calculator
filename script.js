@@ -98,6 +98,10 @@ function operate(num1, num2, op) {
   return op(num1, num2);
 }
 
+// Convert displayValue from string to number
+function getDisplayValueNumber() {
+  return Number(displayValue);
+}
 
 // Click event handler to update displayValue with the button id
 // 	if isOperationComplete is true, set the displayValue to '0'
@@ -161,9 +165,11 @@ numberOptions.forEach(option => option.addEventListener('click', e => {
 operations.forEach(button => button.addEventListener('click', e => {
   let operation = e.target.getAttribute('id');
   if(operation === 'evaluate') {
-    console.log('evaluate');
+    operand2 = getDisplayValueNumber();
+    displayValue = operate(operand1, operand2, operator);
+    refreshDisplay();
   }else {
-    operand1 = displayValue;
+    operand1 = getDisplayValueNumber();
     operator = window[e.target.getAttribute('id')];
   }
   isOperationComplete = true;
