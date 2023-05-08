@@ -115,12 +115,12 @@ function getOperatorFunction(operator) {
 // Click event handler to update displayValue with the button id
 // 	if isOperationComplete is true, set the displayValue to '0'
 numberButtons.forEach(button => button.addEventListener('click', e => {
-  if(getDisplayValueNumberLength() >= 9){
-    return;
-  }
   if(isOperationComplete) {
     displayValue = '0';
     isOperationComplete = false;
+  }
+  if(getDisplayValueNumberLength() >= 9){
+    return;
   }
   let addOn = e.target.getAttribute('id');
   switch(addOn){
