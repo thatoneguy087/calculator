@@ -174,6 +174,9 @@ numberOptions.forEach(option => option.addEventListener('click', e => {
 operations.forEach(button => button.addEventListener('click', e => {
   let operation = e.target.getAttribute('id');
   if(operation === 'evaluate') {
+    if(!operand1){
+      return;
+    }
     operand2 = getDisplayValueNumber();
     displayValue = operate(operand1, operand2, operator).toString();
     clearVariables();
