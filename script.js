@@ -100,9 +100,9 @@ function divide(num1,num2) {
 
 // Operate function - will take in two values, along with an operator, and return the result
 function operate(num1, num2, op) {
-  let result = Number(op(num1, num2));
-  if(result >= 1000000000 || result <= -1000000000){
-    return result.toPrecision(4);
+  let result = (op(num1, num2)).toString();
+  if(result.length > 9){
+    result = Number(result).toPrecision(4);
   }
   return result;
 }
