@@ -120,9 +120,7 @@ function getOperatorFunction(operator) {
   return window[operator];
 }
 
-// Click event handler to update displayValue with the button id
-// 	if isOperationComplete is true, set the displayValue to '0'
-numberButtons.forEach(button => button.addEventListener('click', e => {
+function numberButtonClick(e){
   if(isOperationComplete) {
     displayValue = '0';
     isOperationComplete = false;
@@ -149,10 +147,9 @@ numberButtons.forEach(button => button.addEventListener('click', e => {
   }
   formatDisplayValue();
   refreshDisplay();
-}));
+}
 
-// Click event handler to the option buttons to modify/clear out displayValue
-numberOptions.forEach(option => option.addEventListener('click', e => {
+function numberOptionClick(e) {
   switch(e.target.getAttribute('id')){
     case 'clear':
       clearAll();
@@ -170,16 +167,9 @@ numberOptions.forEach(option => option.addEventListener('click', e => {
       console.log('Something went HORRIBLY wrong.')
   }
   refreshDisplay();
-}));
+}
 
-
-// Add click event handler to the operation buttons
-// 	clicking the '=' button will store the displayValue in operand2. It will then attempt to evaluate with operand1 and the operator. If the other parts are missing, do nothing.
-// 	clicking any other operation will store the displayValue in operand1 and the operand. If we already had a value in 
-// 	operand1, then we already have an operand. We can use these pieces, along with the current displayValue to create a chain of operations. We then update the operand for future chain/evaluation.
-// 	refresh the display
-// 	set isOperationComplete to true
-operations.forEach(button => button.addEventListener('click', e => {
+function operationClick(e) {
   let operation = e.target.getAttribute('id');
   if(operation === 'evaluate') {
     if(!operand1){
@@ -204,6 +194,27 @@ operations.forEach(button => button.addEventListener('click', e => {
     }
   }
   isOperationComplete = true;
+}
+
+// Click event handler to update displayValue with the button id
+// 	if isOperationComplete is true, set the displayValue to '0'
+numberButtons.forEach(button => button.addEventListener('click', e => {
+  numberButtonClick(e);
+}));
+
+// Click event handler to the option buttons to modify/clear out displayValue
+numberOptions.forEach(option => option.addEventListener('click', e => {
+  numberOptionClick(e);
+}));
+
+// Add click event handler to the operation buttons
+// 	clicking the '=' button will store the displayValue in operand2. It will then attempt to evaluate with operand1 and the operator. If the other parts are missing, do nothing.
+// 	clicking any other operation will store the displayValue in operand1 and the operand. If we already had a value in 
+// 	operand1, then we already have an operand. We can use these pieces, along with the current displayValue to create a chain of operations. We then update the operand for future chain/evaluation.
+// 	refresh the display
+// 	set isOperationComplete to true
+operations.forEach(button => button.addEventListener('click', e => {
+  operationClick(e);
 }));
 
 // Merge all button functions into one event handler
