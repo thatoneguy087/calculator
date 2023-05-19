@@ -22,6 +22,9 @@ const numberOptions = document.querySelectorAll('.buttons .options-container but
 // Reference to the operation buttons
 const operations = document.querySelectorAll('.buttons .operators-container button');
 
+// Reference to all buttons
+const buttons = document.querySelectorAll('button');
+
 // refreshDisplay Function - 	set the display text content to the display value
 function refreshDisplay() {
   if(displayValue === ''){
@@ -202,3 +205,8 @@ operations.forEach(button => button.addEventListener('click', e => {
   }
   isOperationComplete = true;
 }));
+
+// Merge all button functions into one event handler
+buttons.forEach(button => button.addEventListener('click', e => {
+  console.log('woop woop woop');
+}))
