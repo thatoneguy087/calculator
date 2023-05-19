@@ -14,13 +14,13 @@ let isOperationComplete = false;
 const display = document.querySelector('.display h1');
 
 // Reference to the number buttons
-const numberButtons = document.querySelectorAll('.buttons .numbers button');
+const numberButtons = document.querySelectorAll('.buttons .numbers-container button');
 
 // Reference to the number options
-const numberOptions = document.querySelectorAll('.buttons .options button');
+const numberOptions = document.querySelectorAll('.buttons .options-container button');
 
 // Reference to the operation buttons
-const operations = document.querySelectorAll('.buttons .operators button');
+const operations = document.querySelectorAll('.buttons .operators-container button');
 
 // refreshDisplay Function - 	set the display text content to the display value
 function refreshDisplay() {
