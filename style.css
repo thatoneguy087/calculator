@@ -18,6 +18,27 @@
   height: 400px;
 }
 
+.display-area {
+  background-color: #C4C4C4;
+  border-radius: 2px 2px 0 0;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.display {
+  color: #372B23;
+  background-color: #E4E6C3;
+  border-radius: 2px;
+  height: 60px;
+  width: 280px;
+  box-shadow: 0 -8px #A2A38B;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
 /* div {
   border: 1px solid black;
   padding: 1px;
