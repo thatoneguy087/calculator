@@ -82,3 +82,10 @@ button {
   background-color: #372B23;
   color: #F7F7F2;
 }
+
+.numbers {
+  background-color: #F7F7F2;
+  color: #362B23;
+  border-color: #C8C8B5;
+  box-shadow: 0 5px #C8C8B5;
+}
