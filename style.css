@@ -6,7 +6,7 @@
 
 .calculator-container {
   background-color: #C8C8B5;
-  border: 4px solid #00113A;
+  border: 4px solid hsl(222, 100%, 11%);
   border-radius: 6px;
   height: 420px;
   width: 340px;
@@ -16,12 +16,16 @@
   background-color: #F7F7F2;
   border-radius: 2px 2px 0 0;
   height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .display-area {
   background-color: #C4C4C4;
   border-radius: 2px 2px 0 0;
   height: 100px;
+  width: 332px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,6 +41,10 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+}
+
+.buttons {
+
 }
 
 /* div {
