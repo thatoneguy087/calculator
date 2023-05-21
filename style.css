@@ -73,4 +73,12 @@
 button {
   height: 45px;
   width: 50px;
+  border: 2px solid black;
+  border-radius: 2px;
+  box-shadow: 0 5px black;
+}
+
+.options {
+  background-color: #372B23;
+  color: #F7F7F2;
 }
