@@ -75,7 +75,6 @@ button {
   width: 50px;
   border: 2px solid black;
   border-radius: 2px;
-  box-shadow: 0 5px black;
 }
 
 .options {
@@ -88,4 +87,11 @@ button {
   color: #362B23;
   border-color: #C8C8B5;
   box-shadow: 0 5px #C8C8B5;
+}
+
+.operators {
+  background-color: #F05D23;
+  color: #F7F7F2;
+  border-color: #8C1F02;
+  box-shadow: 0 5px #8C1F02;
 }
