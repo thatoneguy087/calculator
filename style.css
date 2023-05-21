@@ -43,12 +43,34 @@
   align-items: flex-end;
 }
 
-.buttons {
-
+.buttons,
+.top-buttons,
+.bottom-buttons,
+.left-buttons,
+.right-buttons {
+  display: flex;
+  gap: 10px;
 }
 
-/* div {
-  border: 1px solid black;
-  padding: 1px;
-  margin: 1px;
-} */
+.buttons {
+  width: 250px;
+  height: 300px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-buttons {
+  width: 170px;
+  flex-wrap: wrap;
+}
+
+.right-buttons {
+  width: 50px;
+  flex-direction: column;
+}
+
+button {
+  height: 45px;
+  width: 50px;
+}
