@@ -2,6 +2,8 @@
   Margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
 }
 
 .calculator-container {
@@ -37,10 +39,15 @@
   border-radius: 2px;
   height: 60px;
   width: 280px;
+  padding: 4px 8px;
   box-shadow: 0 -8px #A2A38B;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+}
+
+.calculator h1 {
+  font-size: 45px;
 }
 
 .buttons,
