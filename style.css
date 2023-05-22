@@ -82,6 +82,7 @@ button {
   width: 50px;
   border: 2px solid #000;
   border-radius: 2px;
+  font-size: 20px;
 }
 
 .options {
