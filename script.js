@@ -112,7 +112,7 @@ function getOperatorFunction(operator) {
 
 
 // Function to update displayValue with the button id
-function numberButtonClick(e){
+function numberButtonClick(button){
   if(isOperationComplete) {
     displayValue = '0';
     isOperationComplete = false;
@@ -120,7 +120,7 @@ function numberButtonClick(e){
   if(getDisplayValueNumberLength() >= 9){
     return;
   }
-  let addOn = e.target.getAttribute('id');
+  let addOn = button.getAttribute('id');
   switch(addOn){
     case '.':
       //Only 1 decimal can be present
@@ -142,8 +142,8 @@ function numberButtonClick(e){
 }
 
 // Function to modify/clear out displayValue
-function numberOptionClick(e) {
-  switch(e.target.getAttribute('id')){
+function numberOptionClick(button) {
+  switch(button.getAttribute('id')){
     case 'clear':
       clearAll();
       break;
@@ -168,8 +168,8 @@ function numberOptionClick(e) {
 // 	operand1, then we already have an operand. We can use these pieces, along with the current displayValue to create a chain of operations. We then update the operand for future chain/evaluation.
 // 	refresh the display
 // 	set isOperationComplete to true
-function operationClick(e) {
-  let operation = e.target.getAttribute('id');
+function operationClick(button) {
+  let operation = button.getAttribute('id');
   if(operation === 'evaluate') {
     if(!operand1){
       return;
@@ -196,17 +196,17 @@ function operationClick(e) {
 }
 
 // Merge all button functions into one event handler
-buttons.forEach(button => button.addEventListener('click', e => {
-  let buttonType = e.target.getAttribute('class');
-  switch(buttonType) {
+buttons.forEach(button => button.addEventListener('click', () => {
+  let buttonClass = button.getAttribute('class');
+  switch(buttonClass) {
     case 'options':
-      numberOptionClick(e);
+      numberOptionClick(button);
       break;
     case 'numbers':
-      numberButtonClick(e);
+      numberButtonClick(button);
       break;
     case 'operators':
-      operationClick(e);
+      operationClick(button);
       break;
     default:
       console.log('something went horribly wrong');
