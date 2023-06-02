@@ -106,8 +106,19 @@ function getDisplayValueNumber() {
 }
 
 // Get the operation function
-function getOperatorFunction(operator) {
-  return window[operator];
+function getOperator(button) {
+  switch(button.getAttribute('id')) {
+    case '/':
+      return divide;
+    case '*':
+      return multiply;
+    case '-':
+      return subtract;
+    case '+':
+      return add;
+    default: 
+      console.error('welp something went wrong.');
+  }
 }
 
 
@@ -169,8 +180,7 @@ function numberOptionClick(button) {
 // 	refresh the display
 // 	set isOperationComplete to true
 function operationClick(button) {
-  let operation = button.getAttribute('id');
-  if(operation === 'evaluate') {
+  if(button.getAttribute('id') === 'Enter') {
     if(!operand1){
       return;
     }
@@ -184,12 +194,12 @@ function operationClick(button) {
       operand1 = operate(operand1, getDisplayValueNumber(), operator);
       //string conversion to ensure displayValue will work with other methods
       displayValue = operand1.toString();
-      operator = getOperatorFunction(operation);
+      operator = getOperator(button);
       refreshDisplay();
     } else {
       //get our initial values
       operand1 = getDisplayValueNumber();
-      operator = getOperatorFunction(operation);
+      operator = getOperator(button);
     }
   }
   isOperationComplete = true;
