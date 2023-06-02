@@ -144,16 +144,16 @@ function numberButtonClick(button){
 // Function to modify/clear out displayValue
 function numberOptionClick(button) {
   switch(button.getAttribute('id')){
-    case 'clear':
+    case 'x':
       clearAll();
       break;
-    case  'clear-entry':
+    case  'c':
       clearDisplay();
       break;
-    case 'backspace':
+    case 'Backspace':
       backspace();
       break;
-    case 'sign':
+    case 's':
       changeDisplayValueSign();
       break;
     default:
@@ -212,3 +212,7 @@ buttons.forEach(button => button.addEventListener('click', () => {
       console.log('something went horribly wrong');
   }
 }))
+
+window.addEventListener('keydown', e => {
+  console.log(e.key)
+});
