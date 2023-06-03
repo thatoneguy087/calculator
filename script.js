@@ -224,5 +224,20 @@ buttons.forEach(button => button.addEventListener('click', () => {
 }))
 
 window.addEventListener('keydown', e => {
-  console.log(e.key)
+  const selectedKey = document.querySelector(`button[id="${e.key}"]`);
+  if(!selectedKey) return;
+  const selectedKeyClass = selectedKey.getAttribute('class');
+  switch(selectedKeyClass) {
+    case 'options':
+      numberOptionClick(selectedKey);
+      break;
+    case 'numbers':
+      numberButtonClick(selectedKey);
+      break;
+    case 'operators':
+      operationClick(selectedKey);
+      break;
+    default:
+      console.log('something went horribly wrong');
+  }
 });
