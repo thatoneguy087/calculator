@@ -205,39 +205,32 @@ function operationClick(button) {
   isOperationComplete = true;
 }
 
-// Merge all button functions into one event handler
-buttons.forEach(button => button.addEventListener('click', () => {
-  let buttonClass = button.getAttribute('class');
-  switch(buttonClass) {
+// Use appropriate function to update the display value based upon input
+function handleCalcInput(input) {
+  const inputClass = input.getAttribute('class');
+  switch(inputClass) {
     case 'options':
-      numberOptionClick(button);
+      numberOptionClick(input);
       break;
     case 'numbers':
-      numberButtonClick(button);
+      numberButtonClick(input);
       break;
     case 'operators':
-      operationClick(button);
+      operationClick(input);
       break;
     default:
       console.log('something went horribly wrong');
   }
+}
+
+// Merge all button functions into one event handler
+buttons.forEach(button => button.addEventListener('click', () => {
+  handleCalcInput(button);
 }))
 
+//Keyboard support integration
 window.addEventListener('keydown', e => {
   const selectedKey = document.querySelector(`button[id="${e.key}"]`);
   if(!selectedKey) return;
-  const selectedKeyClass = selectedKey.getAttribute('class');
-  switch(selectedKeyClass) {
-    case 'options':
-      numberOptionClick(selectedKey);
-      break;
-    case 'numbers':
-      numberButtonClick(selectedKey);
-      break;
-    case 'operators':
-      operationClick(selectedKey);
-      break;
-    default:
-      console.log('something went horribly wrong');
-  }
+  handleCalcInput(selectedKey);
 });
