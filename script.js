@@ -211,17 +211,17 @@ function getButtonClass(button) {
 }
 
 // Use appropriate function to update the display value based upon input
-function handleCalcInput(input) {
-  const inputClass = getButtonClass(input);
-  switch(inputClass) {
+function handleCalcInput(button) {
+  const buttonClass = getButtonClass(button);
+  switch(buttonClass) {
     case 'options':
-      numberOptionClick(input);
+      numberOptionClick(button);
       break;
     case 'numbers':
-      numberButtonClick(input);
+      numberButtonClick(button);
       break;
     case 'operators':
-      operationClick(input);
+      operationClick(button);
       break;
     default:
       console.log('something went horribly wrong');
