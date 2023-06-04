@@ -121,9 +121,29 @@ function getOperator(button) {
   }
 }
 
+// Function to modify/clear out displayValue
+function handleNumOption(button) {
+  switch(button.getAttribute('id')){
+    case 'x':
+      clearAll();
+      break;
+    case  'c':
+      clearDisplay();
+      break;
+    case 'Backspace':
+      backspace();
+      break;
+    case 's':
+      changeDisplayValueSign();
+      break;
+    default:
+      console.log('Something went HORRIBLY wrong.')
+  }
+  refreshDisplay();
+}
 
 // Function to update displayValue with the button id
-function numberButtonClick(button){
+function handleNumber(button){
   if(isOperationComplete) {
     displayValue = '0';
     isOperationComplete = false;
@@ -152,34 +172,13 @@ function numberButtonClick(button){
   refreshDisplay();
 }
 
-// Function to modify/clear out displayValue
-function numberOptionClick(button) {
-  switch(button.getAttribute('id')){
-    case 'x':
-      clearAll();
-      break;
-    case  'c':
-      clearDisplay();
-      break;
-    case 'Backspace':
-      backspace();
-      break;
-    case 's':
-      changeDisplayValueSign();
-      break;
-    default:
-      console.log('Something went HORRIBLY wrong.')
-  }
-  refreshDisplay();
-}
-
 // Add Function for the operation buttons
 // 	clicking the '=' button will store the displayValue in operand2. It will then attempt to evaluate with operand1 and the operator. If the other parts are missing, do nothing.
 // 	clicking any other operation will store the displayValue in operand1 and the operand. If we already had a value in 
 // 	operand1, then we already have an operand. We can use these pieces, along with the current displayValue to create a chain of operations. We then update the operand for future chain/evaluation.
 // 	refresh the display
 // 	set isOperationComplete to true
-function operationClick(button) {
+function handleOperator(button) {
   if(button.getAttribute('id') === 'Enter') {
     if(!operand1){
       return;
@@ -215,13 +214,13 @@ function handleCalcInput(button) {
   const buttonClass = getButtonClass(button);
   switch(buttonClass) {
     case 'options':
-      numberOptionClick(button);
+      handleNumOption(button);
       break;
     case 'numbers':
-      numberButtonClick(button);
+      handleNumber(button);
       break;
     case 'operators':
-      operationClick(button);
+      handleOperator(button);
       break;
     default:
       console.log('something went horribly wrong');
