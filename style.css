@@ -105,3 +105,9 @@ button {
   border-color: #8C1F02;
   box-shadow: 0 5px #8C1F02;
 }
+
+.active {
+  box-shadow: 0 0;
+  transform: translateY(5px);
+
+}

@@ -205,9 +205,14 @@ function operationClick(button) {
   isOperationComplete = true;
 }
 
+// get the first class if the button has multiple classes
+function getButtonClass(button) {
+  return Array.from(button.classList)[0];
+}
+
 // Use appropriate function to update the display value based upon input
 function handleCalcInput(input) {
-  const inputClass = input.getAttribute('class');
+  const inputClass = getButtonClass(input);
   switch(inputClass) {
     case 'options':
       numberOptionClick(input);
@@ -224,9 +229,19 @@ function handleCalcInput(input) {
 }
 
 // Merge all button functions into one event handler
-buttons.forEach(button => button.addEventListener('click', () => {
-  handleCalcInput(button);
-}))
+let activeButton;
+buttons.forEach(button => {
+  button.addEventListener('mousedown', () => {
+    activeButton = button;
+    button.classList.add('active');
+  });
+});
+window.addEventListener('mouseup', e => {
+  if(!activeButton) return;
+  activeButton.classList.remove('active');
+  handleCalcInput(activeButton);
+  activeButton = null;
+});
 
 //Keyboard support integration
 window.addEventListener('keydown', e => {
